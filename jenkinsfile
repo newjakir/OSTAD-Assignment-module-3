@@ -1,0 +1,42 @@
+pipeline {
+    agent {
+        label 'jakir007-prod-server'
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                echo "Cloning Repository...\n"
+                git branch: 'main', credentialsId: '456c88b8-2ee6-4e59-a69d-f41a035643c6', url: 'git@github.com:newjakir/OSTAD-Assignment-module-3.git'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                script {
+                    echo "Installing depnedencies...\n"
+                    sh 'npm install'
+                }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                script {
+                    echo "Running Tests...\n"
+                    sh 'npm run check'
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'All tests passed!'
+        }
+
+        failure {
+            echo 'Tests failed. Marking build as failed.'
+        }
+    }
+}
