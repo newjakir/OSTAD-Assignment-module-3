@@ -24,6 +24,9 @@ pipeline {
             steps {
                 script {
                     echo "Running Tests...\n"
+                    //JUnit-Style
+                    sh 'npm run test || true'
+                    //Regular Test
                     sh 'npm run check'
                 }
             }
@@ -31,12 +34,17 @@ pipeline {
     }
     
     post {
+        always {
+            junit 'test/test-results.xml'
+        }
         success {
             echo 'All tests passed!'
+            discordSend description: "The pipeline ${currentBuild.fullDisplayName} completed successfully", footer: 'Sent from Jenkins', title: 'M3P1 Build', webhookURL: 'https://discord.com/api/webhooks/1361781638920409463/cpMP9fDyOhLFs0kLduA7QauhG0iTqBmTw1CA74iS_qsaT6XVE2rEvIjR9kKCh3ovDUhV'
         }
 
         failure {
             echo 'Tests failed. Marking build as failed.'
+            discordSend description: "Failed Pipeline: ${currentBuild.fullDisplayName}", footer: 'Sent from Jenkins', title: 'M3P1 Build', webhookURL: 'https://discord.com/api/webhooks/1361781638920409463/cpMP9fDyOhLFs0kLduA7QauhG0iTqBmTw1CA74iS_qsaT6XVE2rEvIjR9kKCh3ovDUhV'
         }
     }
 }
