@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.015" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-04-16T14:02:31" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Server Tests" timestamp="2025-04-16T14:02:31" tests="0" file="/Users/jakir/devops/ostad/module3/OSTAD-Assignment-module-3/test/server.test.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="GET /" timestamp="2025-04-16T14:02:31" tests="1" file="/Users/jakir/devops/ostad/module3/OSTAD-Assignment-module-3/test/server.test.js" time="0.011" failures="0">
+    <testcase name="Server Tests GET / should return HTML file" time="0.010" classname="should return HTML file">
+    </testcase>
+  </testsuite>
+  <testsuite name="GET /api" timestamp="2025-04-16T14:02:31" tests="1" file="/Users/jakir/devops/ostad/module3/OSTAD-Assignment-module-3/test/server.test.js" time="0.002" failures="0">
+    <testcase name="Server Tests GET /api should return Hello World message" time="0.002" classname="should return Hello World message">
+    </testcase>
+  </testsuite>
+</testsuites>
